@@ -2,12 +2,13 @@ import React from 'react';
 import './App.scss';
 
 import PhotoList from './components/PhotoList';
-import TopicList from 'components/TopicList';
+
 import TopNavigationBar from 'components/TopNavigationBar';
+import HomeRoute from 'routes/HomeRoute';
 
 // import TopicListItem from 'components/TopicListItem';
 // import PhotoListItem from './components/PhotoListItem';
-
+// import TopicList from 'components/TopicList';
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
@@ -30,11 +31,12 @@ const App = () => {
       <PhotoListItem key={photo.id} props={photo}/>
       ))} */}
 
-      <TopNavigationBar />
+        <TopNavigationBar />
       {/* <TopicList /> */}
       {/* <TopicListItem /> */}
       <PhotoList />
-      
+      <HomeRoute />
+    
           
     </div>
   );

@@ -1,8 +1,12 @@
 import React from 'react';
+import './App.scss';
 
 import PhotoList from './components/PhotoList';
+import TopicList from 'components/TopicList';
+import TopNavigationBar from 'components/TopNavigationBar';
+
+// import TopicListItem from 'components/TopicListItem';
 // import PhotoListItem from './components/PhotoListItem';
-import './App.scss';
 
 
 // Note: Rendering a single component to build components in isolation
@@ -26,8 +30,12 @@ const App = () => {
       <PhotoListItem key={photo.id} props={photo}/>
       ))} */}
 
+      <TopNavigationBar />
+      {/* <TopicList /> */}
+      {/* <TopicListItem /> */}
       <PhotoList />
       
+          
     </div>
   );
 };

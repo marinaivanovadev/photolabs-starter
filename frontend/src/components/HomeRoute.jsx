@@ -1,9 +1,13 @@
-import React from "react";
-import TopNavigationBar from "../components/TopNavigationBar";
-import PhotoList from "../components/PhotoList";
+import React, { useState } from 'react';
+import '../styles/HomeRoute.scss';
+import TopNavigation from './TopNavigationBar';
+import PhotoList from 'components/PhotoList';
+import PhotoFavButton from './PhotoFavButton';
+
 
 function HomeRoute() {
   const [likedPhotos, setLikedPhotos] = useState([]);
+  const [hasFavorites, setHasFavorites] = useState(false); 
   
   const toggleFavourite = (photo) => {
     if (likedPhotos.includes(photo)){
@@ -22,17 +26,23 @@ function HomeRoute() {
   }
   
   }
+
+   // Update hasFavorites based on the updated likedPhotos
+    setHasFavorites(likedPhotos.length > 0);
+  
+
+
   return (
     <div className="home-route">
-      <TopNavigationBar />
-      <PhotoList toggleFavourite={toggleFavourite} />
+      <TopNavigation hasFavorites={hasFavorites}/> 
+      <PhotoList photos={photos} toggleFavourite={toggleFavourite} />
       <PhotoFavButton
         photo={props.photo}
         toggleFavourite={toggleFavourite}
       />
     </div>
   );
-}
+ };
 
 export default HomeRoute;
 

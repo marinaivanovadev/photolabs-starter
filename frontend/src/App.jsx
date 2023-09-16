@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import "./App.scss";
-
-import TopNavigationBar from "components/TopNavigationBar";
+import TopNavigation from "components/TopNavigationBar";
 import PhotoList from "./components/PhotoList";
 import HomeRoute from "routes/HomeRoute";
-import PhotoFavButton from "components/PhotoFavButton";
+
 
 const App = () => {
   const [likedPhotos, setLikedPhotos] = useState([]);
-  
+
   const toggleFavourite = (photo) => {
     if (likedPhotos.includes(photo)){
       setLikedPhotos(prevFavourites => {
@@ -28,7 +27,7 @@ const App = () => {
   }
   return (
     <div className="App">
-      <TopNavigationBar />
+      <TopNavigation />
       <PhotoList toggleFavourite={toggleFavourite}/>
       <HomeRoute />
       </div>

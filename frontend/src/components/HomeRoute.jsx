@@ -1,16 +1,40 @@
 import React from "react";
+import TopNavigationBar from "../components/TopNavigationBar";
+import PhotoList from "../components/PhotoList";
 
-import TopNavigationBar from './TopNavigationBar'; 
-import PhotoList from './PhotoList'; 
-import '../styles/HomeRoute.scss';
-
-const HomeRoute = () => {
+function HomeRoute() {
+  const [likedPhotos, setLikedPhotos] = useState([]);
+  
+  const toggleFavourite = (photo) => {
+    if (likedPhotos.includes(photo)){
+      setLikedPhotos(prevFavourites => {
+        let newFavourites = prevFavourites.filter((favouritePhoto) => favouritePhoto != photo);
+        console.log(newFavourites); //log new state
+        return newFavourites;
+      });
+    } else {
+      // If not liked, add it
+      setLikedPhotos(prevFavourites => {
+        let newFavourites = [...prevFavourites, photo];
+        console.log(newFavourites); //log new state
+        return newFavourites;
+    });
+  }
+  
+  }
   return (
     <div className="home-route">
       <TopNavigationBar />
-      <PhotoList />
+      <PhotoList toggleFavourite={toggleFavourite} />
+      <PhotoFavButton
+        photo={props.photo}
+        toggleFavourite={toggleFavourite}
+      />
     </div>
   );
-};
+}
 
 export default HomeRoute;
+
+
+

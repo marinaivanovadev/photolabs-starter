@@ -1,44 +1,37 @@
-import React from 'react';
-import './App.scss';
+import React, { useState } from "react";
+import "./App.scss";
 
-import PhotoList from './components/PhotoList';
+import TopNavigationBar from "components/TopNavigationBar";
+import PhotoList from "./components/PhotoList";
+import HomeRoute from "routes/HomeRoute";
+import PhotoFavButton from "components/PhotoFavButton";
 
-import TopNavigationBar from 'components/TopNavigationBar';
-import HomeRoute from 'routes/HomeRoute';
-
-// import TopicListItem from 'components/TopicListItem';
-// import PhotoListItem from './components/PhotoListItem';
-// import TopicList from 'components/TopicList';
-
-// Note: Rendering a single component to build components in isolation
 const App = () => {
-  // const photos = new Array(1).fill({
-  //   id: "1",
-  //   location: {
-  //     city: "Montreal",
-  //     country: "Canada",
-  //   },
-  //   imageSource: `${process.env.PUBLIC_URL}/Image-1-Regular.jpeg`,
-  //   username: "Joe Example",
-  //   profile: `${process.env.PUBLIC_URL}/profile-1.jpg`,
-  // });
-  // { Array.from(Array(3)).map((_, index) => <PhotoListItem key={index}/>) }
+  const [likedPhotos, setLikedPhotos] = useState([]);
   
-
+  const toggleFavourite = (photo) => {
+    if (likedPhotos.includes(photo)){
+      setLikedPhotos(prevFavourites => {
+        let newFavourites = prevFavourites.filter((favouritePhoto) => favouritePhoto != photo);
+        console.log(newFavourites); //log new state
+        return newFavourites;
+      });
+    } else {
+      // If not liked, add it
+      setLikedPhotos(prevFavourites => {
+        let newFavourites = [...prevFavourites, photo];
+        console.log(newFavourites); //log new state
+        return newFavourites;
+    });
+  }
+  
+  }
   return (
     <div className="App">
-        {/* {photos.map((photo) => (
-      <PhotoListItem key={photo.id} props={photo}/>
-      ))} */}
-
-        <TopNavigationBar />
-      {/* <TopicList /> */}
-      {/* <TopicListItem /> */}
-      <PhotoList />
+      <TopNavigationBar />
+      <PhotoList toggleFavourite={toggleFavourite}/>
       <HomeRoute />
-    
-          
-    </div>
+      </div>
   );
 };
 

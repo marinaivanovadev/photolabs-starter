@@ -1,26 +1,26 @@
 import React from "react";
 import PhotoListItem from "./PhotoListItem";
+import photos from "mocks/photos";
 
-import photos from "mocks/photos"
-import "../styles/PhotoList.scss"; // Import the SCSS file
+import "../styles/PhotoList.scss";
 
-const PhotoList = (props) => {
+
+const PhotoList = () => {
   return (
-    <ul className="photo-list"> 
+    <ul className="photo-list">
       {photos.map((photo) => (
-        <PhotoListItem
-          key={photo.id}
-          photo={photo}
-          toggleFavourite={props.toggleFavourite}
-          imageSource={photo.urls.regular}
-          profile={photo.user.profile}
-          username={photo.user.username}
-          location={photo.location}
-        />
+        // Render a PhotoListItem component for each item in the mock data
+        <li key={photo.id}>
+          <PhotoListItem
+            id={photo.id}
+            location={photo.location}
+            imageSource={photo.urls.regular}
+            username={photo.user.username}
+            profile={photo.user.profile}
+          />
+        </li>
       ))}
     </ul>
   );
-}
-
+};
 export default PhotoList;
-

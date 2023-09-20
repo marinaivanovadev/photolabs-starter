@@ -185,94 +185,44 @@ const photo10 = {
 const photos = [
   {
     ...photo1,
-    similar_photos: {
-      photo2,
-      photo3,
-      photo4,
-      photo5,
-    }
+    similar_photos: ['2', '3', '4', '5'],
   },
   {
     ...photo2,
-    similar_photos: {
-      photo2,
-      photo3,
-      photo4,
-      photo5,
-    }
+    similar_photos: ['1', '3', '4', '5'],
   },
   {
     ...photo3,
-    similar_photos: {
-      photo2,
-      photo3,
-      photo4,
-      photo5,
-    }
+    similar_photos: ['1', '2', '4', '5'],
   },
   {
     ...photo4,
-    similar_photos: {
-      photo2,
-      photo3,
-      photo4,
-      photo5,
-    }
+    similar_photos: ['1', '2', '3', '5'],
   },
   {
     ...photo5,
-    similar_photos: {
-      photo2,
-      photo3,
-      photo4,
-      photo5,
-    }
+    similar_photos: ['1', '2', '3', '4'],
   },
   {
     ...photo6,
-    similar_photos: {
-      photo2,
-      photo3,
-      photo4,
-      photo5,
-    }
+    similar_photos: ['2', '3', '4', '5'],
   },
   {
     ...photo7,
-    similar_photos: {
-      photo2,
-      photo3,
-      photo4,
-      photo5,
-    }
+    similar_photos: ['2', '3', '4', '5'],
   },
   {
     ...photo8,
-    similar_photos: {
-      photo2,
-      photo3,
-      photo4,
-      photo5,
-    }
+    similar_photos: ['2', '3', '4', '5'],
   },
   {
     ...photo9,
-    similar_photos: {
-      photo2,
-      photo3,
-      photo4,
-      photo5,
-    }
+    similar_photos: ['2', '3', '4', '5'],
   },
   {
     ...photo10,
-    similar_photos: {
-      photo2,
-      photo3,
-      photo4,
-      photo5,
-    }
-  }
-]
+    similar_photos: ['2', '3', '4', '5'],
+  },
+];
 
 export default photos;

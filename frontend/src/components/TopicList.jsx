@@ -13,7 +13,7 @@ const TopicList = () => {
             
         <TopicListItem
           key={topic.id}
-          label={topic.title}
+          title={topic.title}
           slug={topic.slug} />
              
       ))}

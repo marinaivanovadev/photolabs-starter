@@ -11,7 +11,7 @@ const {label } = props;
   return (
     <div className="topic-list__item">
       {/* Insert React */}
-      <span className="topic-list__item-span">{props.label}</span>
+      <span className="topic-list__item-span">{props.title}</span>
     
     </div>
   );

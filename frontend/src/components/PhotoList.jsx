@@ -1,24 +1,27 @@
 import React from "react";
 import PhotoListItem from "./PhotoListItem";
+// const FavouriteContext = React.createContext();
 import photos from "mocks/photos";
 
 import "../styles/PhotoList.scss";
 
 
-const PhotoList = () => {
+const PhotoList = (props) => {
   return (
     <ul className="photo-list">
-      {photos.map((photo) => (
+      {photos.map((photoData) => (
         // Render a PhotoListItem component for each item in the mock data
-        <li key={photo.id}>
-          <PhotoListItem
-            id={photo.id}
-            location={photo.location}
-            imageSource={photo.urls.regular}
-            username={photo.user.username}
-            profile={photo.user.profile}
+      
+          <PhotoListItem 
+          key={photoData.id}
+          photoID = {photoData.id}
+          data={photoData}
+          updateFavorites={props.updateFavorites}
+          openModal={props.openModal}
+          similar_photos={props.similar_photos}
+          
           />
-        </li>
+      
       ))}
     </ul>
   );

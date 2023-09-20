@@ -1,4 +1,5 @@
 .photo-details-modal {
+  
   background-color: white;
   box-shadow: 0 0 0 50vmax rgba(0,0,0,.5);
   position: absolute;
@@ -27,6 +28,7 @@
 .photo-details-modal__images {
   margin-left: 36px;
   margin-top: 8px;
+  width: 100vh;
 }
 
 .photo-details-modal__image {
@@ -41,6 +43,7 @@
   margin: 16px;
   margin-top: 8px;
   align-items: center;
+  
 }
 
 .photo-details-modal__photographer-details {
@@ -55,4 +58,7 @@
   margin-top: 24px;
   margin-bottom: 24px;
   width: 90%;
+}
+.photo-details-modal__closed {
+  display: none; 
 }

@@ -7,11 +7,11 @@ import "../styles/TopicListItem.scss";
 
 const TopicListItem = (props) => {
 
-const {label } = props;
+const {label, getPhotosByTopic, title } = props;
   return (
     <div className="topic-list__item">
       {/* Insert React */}
-      <span className="topic-list__item-span">{props.title}</span>
+      <span onClick={getPhotosByTopic} className="topic-list__item-span">{props.title}</span>
     
     </div>
   );

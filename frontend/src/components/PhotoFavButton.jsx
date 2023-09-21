@@ -29,7 +29,7 @@ function PhotoFavButton(props) {
     <div className="photo-list__fav-icon" onClick={handleLike}>
       <div className="photo-list__fav-icon-svg">
         {/* Use the FavIcon component with onClick handler */}
-        <FavIcon selected={isLiked} />
+        <FavIcon displayAlert={false} selected={isLiked} />
 
       </div>
     </div>

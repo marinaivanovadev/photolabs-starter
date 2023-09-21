@@ -5,12 +5,21 @@ import FavIcon from './FavIcon';
 
 import '../styles/TopNavigationBar.scss'
 
-const TopNavigationBar = (props) => {
+const TopNavigationBar = ({
+ topics,
+ getPhotosByTopic,
+ hasFavorites,
+ getAllPhotos,
+
+}) => {
   return (
     <div className="top-nav-bar">
-      <span className="top-nav-bar__logo">PhotoLabs</span>
-           <TopicList />
-      <FavBadge hasFavorites={props.hasFavorites}/>
+      <span onClick={getAllPhotos} className="top-nav-bar__logo">PhotoLabs</span>
+      <TopicList topics={topics} getPhotosByTopic={getPhotosByTopic} />
+      <div>
+      
+      <FavBadge hasFavorites={hasFavorites}/>
+      </div>
       </div>
         )
 }

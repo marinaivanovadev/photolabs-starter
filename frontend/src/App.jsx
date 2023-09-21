@@ -26,7 +26,7 @@ const App = () => {
     <div className="App">
      <HomeRoute openModal={openModal}/>
      {isModalOpen && selectedPhoto && (
-        <PhotoDetailsModal isOpen={isModalOpen} onClose={closeModal} photo={selectedPhoto} photos={photos}/>
+        <PhotoDetailsModal isOpen={isModalOpen} onClose={closeModal} selectedPhoto={selectedPhoto} photos={photos}/>
      )}
     </div>
 

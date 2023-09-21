@@ -5,13 +5,13 @@ import '../styles/PhotoListItem.scss';
 
 
 const PhotoListItem = (props) => {
-  const { urls, user, location } = props.data;
+  const { urls, user, location,  } = props.data;
 
 
 
   const handleImageClick = () => {
   // Pass the selected photo details to the parent component and open the modal
-  props.openModal({
+ props.openModal({
     urls,
     user,
     location,

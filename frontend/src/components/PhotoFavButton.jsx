@@ -14,7 +14,6 @@ function PhotoFavButton(props) {
     console.log(`Before toggle: isLiked=${isLiked}`);
     // setIsLiked((prevIsLiked) => !prevIsLiked);
     setIsLiked(!isLiked);
-    console.log(`After toggle: isLiked=${!isLiked}`);
     // setIsLiked(props.toggleFavourite);
     updateFavorites(props.photo);
   

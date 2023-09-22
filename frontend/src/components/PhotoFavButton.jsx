@@ -20,13 +20,13 @@ function PhotoFavButton(props) {
   
   });
   
-  // // Use useEffect to log the updated value of isLiked
-  // useEffect(() => {
-  //   console.log({ isLiked });
-  // }, [isLiked]);
+  // Use useEffect to log the updated value of isLiked
+  useEffect(() => {
+    console.log({ isLiked });
+  }, [isLiked]);
 
   return (
-    <div className="photo-list__fav-icon" onClick={handleLike}>
+    <div className="photo-list__fav-icon" onClick={handleLike} >
       <div className="photo-list__fav-icon-svg">
         {/* Use the FavIcon component with onClick handler */}
         <FavIcon displayAlert={false} selected={isLiked} />

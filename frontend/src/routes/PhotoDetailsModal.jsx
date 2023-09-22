@@ -4,6 +4,8 @@ import closeSymbol from 'assets/closeSymbol.svg';
 import PhotoList from 'components/PhotoList';
 
 const PhotoDetailsModal = ({ isOpen, onClose, selectedPhoto, updateFavorites }) => {
+
+  
   useEffect(() => {
     // Log the photo details when the modal opens
     if (isOpen && selectedPhoto) {

@@ -20,15 +20,17 @@ const PhotoListItem = (props) => {
   }
 
   return (
-    <li className="photo-list__item">
+   <li className="photo-list__item">
       <PhotoFavButton photoID={props.photoID} updateFavorites={props.updateFavorites} />
-      <img className="photo-list__image" onClick={handleImageClick} src={urls.regular} alt={`Photo by ${user.username}`} />
-      <div className="photo-list__user-details">
-        <img className="photo-list__user-profile" src={user.profile} alt={`${user.username}'s profile`} />
-        <div className="photo-list__user-info-container">
-          <h3 className="photo-list__user-info">{user.username}</h3>
-          <p className="photo-list__user-location">{location.city}, {location.country}</p>
-        </div>
+      <div className="photo-list__image-container">
+        <img className="photo-list__image" onClick={handleImageClick} src={urls.regular} alt={`Photo by ${user.name}`} />
+        <div className="photo-list__user-details">
+          <img className="photo-list__user-profile" src={user.profile} alt={`${user.username}'s profile`} />
+          <div className="photo-list__user-info-container">
+            <h3 className="photo-list__user-info">{user.name}</h3>
+            <p className="photo-list__user-location">{location.city}, {location.country}</p>
+          </div>
+          </div>
       </div>
     </li>
   );

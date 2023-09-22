@@ -16,7 +16,10 @@ const HomeRoute = (props) => {
       <TopNavigationBar hasFavorites = {props.hasFavorites}/>
 
       {/* Include the Photos Section */}
-      <PhotoList  updateFavorites={props.updateFavorites} openModal = {props.openModal} isFav={props.isFav}/>
+      <PhotoList 
+      updateFavorites={props.updateFavorites}
+      openModal = {props.openModal}
+      isFav={props.isFav}/>
       <div>
      
     </div>

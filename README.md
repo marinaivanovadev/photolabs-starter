@@ -1,5 +1,5 @@
 # react-photolabs
-The PhotoLabs project for the Web Development React course programming.
+The PhotoLabs is a React based single-page application that allows users to view photos in different contexts.
     
 
 # Photolabs

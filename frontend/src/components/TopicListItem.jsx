@@ -9,8 +9,7 @@ const TopicListItem = (props) => {
     }
   };
   return (
-    <div className="topic-list__item">
-      <span onClick={() => handleItemClick(props.topic.id)} className="topic-list__item-span" />
+    <div className="topic-list__item" onClick={() => handleItemClick(props.topic.id)}>
       <span> {props.topic.title}</span>
     </div>
   );

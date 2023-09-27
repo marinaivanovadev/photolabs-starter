@@ -1,80 +1,62 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import '../styles/PhotoDetailsModal.scss';
-import closeSymbol from 'assets/closeSymbol.svg';
+import '../styles/PhotoListItem.scss';
+import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoList from 'components/PhotoList';
+import PhotoFavButton from 'components/PhotoFavButton';
 
-const PhotoDetailsModal = ({ isOpen, onClose, selectedPhoto, updateFavorites }) => {
+const PhotoDetailsModal = (props) => {
+  const { urls, user, location } = props.photo;
+  const similarPhotos = props.similarPhotos;
 
-  
-  useEffect(() => {
-    // Log the photo details when the modal opens
-    if (isOpen && selectedPhoto) {
-      console.log('Selected Photo Details:', selectedPhoto);
-    }
-  }, [isOpen, selectedPhoto]);
+  // Transform the values of the similar_photos object into an array
+  const similarPhotosArray = Object.values(similarPhotos);
 
-  const renderSimilarPhotos = () => {
-    if (!isOpen || !selectedPhoto || !selectedPhoto.similar_photos) {
-      return null;
-    }
-
-    return (
-      <div className="photo-details-modal__similar-photos">
-        <h2>Similar Photos</h2>
-        <div className="photo-details-modal__similar-photos-list">
-          {selectedPhoto.similar_photos.map((similarPhoto) => {
-            return (
-              <div key={similarPhoto.id} className="similar-photo">
-                <img src={similarPhoto.urls.regular} alt={similarPhoto.title} />
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    );
-  };
+  // Verify whether props.favorites is both defined and includes the id.
+  const isFavorite = props.favorites && props.favorites.includes(props.photo.id);
 
   return (
-    <div className={`photo-details-modal ${isOpen ? 'open' : ''}`}>
-      <button className="photo-details-modal__close-button" onClick={onClose}>
+    <div className="photo-details-modal">
+      
+      <button
+        className="photo-details-modal__close-button"
+        onClick={props.closeModal}>
         <img src={closeSymbol} alt="close symbol" />
       </button>
+      <div className='photo-details-modal__images'>
 
-      <div className="photo-details-modal__header">
-        {selectedPhoto.urls?.full && (
-          <img
-            className="photo-details-modal__images"
-            src={selectedPhoto.urls.full}
-            alt={selectedPhoto.title}
-          />
-        )}
-        <div className="photo-details-modal__photographer-details">
-          {selectedPhoto.user?.profile && (
-            <img
-              className="photo-list__user-profile"
-              src={selectedPhoto.user.profile}
-              alt={`${selectedPhoto.user.username}'s profile`}
-            />
-          )}
-          <div className="photo-list__user-info-container">
-            <h3 className="photo-list__user-info">{selectedPhoto.user?.name}</h3>
-            {selectedPhoto.location?.city && (
-              <h3 className="photo-list__user-location">
-                {selectedPhoto.location.city}, {selectedPhoto.location.country}
-              </h3>
-            )}
-          </div>
+      <PhotoFavButton 
+        photoId = {props.photo.id}
+        isFavorite={isFavorite}
+        updateFavorites = {props.updateFavorites} />
+
+        
+        <img className='photo-details-modal__image' src={urls.full} alt="full image"/>
+        <div className='photo-details-modal__photographer-details'>
+          <img className="photo-list__user-profile" src={user.profile}alt="heart"/>
+        <div className="photo-list__user-info">
+            {user.name}
+        <div className="photo-list__user-location">
+            {location.city}, {location.country}
+        </div>
+        </div>
+        </div>
+        
+        <div className='photo-details-modal__header'>
+          Similar photos
+        </div>
+     
+        <div>
+        
+        <PhotoList
+          favorites={props.favorites}
+          updateFavorites={props.updateFavorites}
+          showopenModal={props.openModal}
+          photos={similarPhotosArray}
+        /> 
+
         </div>
       </div>
-
-      {renderSimilarPhotos()}
-
-      {/* You can pass the similarPhotos directly */}
-      <PhotoList
-        photos={selectedPhoto.similar_photos || []}
-        updateFavorites={updateFavorites} // Ensure this is passed correctly
-        isOpen={isOpen} // Ensure this is passed correctly
-      />
     </div>
   );
 };

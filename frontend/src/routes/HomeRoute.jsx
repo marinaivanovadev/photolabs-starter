@@ -1,30 +1,36 @@
-import React, {useState} from 'react';
-
-import PhotoList from 'components/PhotoList';
+import React from 'react';
 import TopNavigationBar from 'components/TopNavigationBar';
+import PhotoList from 'components/PhotoList';
 import '../styles/HomeRoute.scss';
-import photos from 'mocks/photos';
 
 
-const HomeRoute = (props) => {
+const HomeRoute = ({ topics, isFavPhotoExist, photos, favorites, updateFavorites, openModal, fetchPhotosByTopic }) => {
+    // Function to handle topic clicks
+    const handleItemClick = (topicId) => {
+        // fetchPhotosByTopic function when a topic is clicked
+        fetchPhotosByTopic(topicId);
+    };
 
-  
-  
-  return (
-    <div className="home-route">
-      {/* Include the Top Navigation Bar */}
-      <TopNavigationBar hasFavorites = {props.hasFavorites}/>
+    return (
+        <div className="home-route">
+             {/* Include the Top Navigation Bar */}
+            
+            <TopNavigationBar 
+            topics={topics}
+            isFavPhotoExist={isFavPhotoExist}
+            onTopicClick={handleItemClick}
+            />
 
-      {/* Include the Photos Section */}
-      <PhotoList 
-      updateFavorites={props.updateFavorites}
-      openModal = {props.openModal}
-      isFav={props.isFav}/>
-      <div>
-     
-    </div>
-    </div>
-  );
-}
+             {/* Include the Photos Section */}
+            <PhotoList 
+            photos={photos}
+            favorites={favorites}
+            updateFavorites={updateFavorites}
+            openModal={openModal}
+            />
+
+        </div>
+    );
+};
 
 export default HomeRoute;

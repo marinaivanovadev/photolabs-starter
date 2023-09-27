@@ -1,37 +1,47 @@
-import React from 'react';
+import React from "react";
 import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
-import useApplicationData from './hooks/useApplicationData'; // Import the custom hook
-import photos from 'mocks/photos';
+import useApplicationData from './hooks/useApplicationData';
 
 import './App.scss';
 
 const App = () => {
+
   const {
     state,
-    updateToFavPhotoIds,
-    setPhotoSelected,
-    onClosePhotoDetailsModal,
+    updateFavorites,
+    openModal,
+    closeModal,
+    fetchPhotosByTopic
   } = useApplicationData();
 
-const hasFavorites = () => {
-    return state.isFav.length > 0;
-  };
+  // Extract the state values from the state object
+    const { favorites, modal, topicData, photoData } = state;
+    const selectedPhotoId = modal;
+    const selectedPhoto = photoData.find((photo) => photo.id === selectedPhotoId);
 
   return (
     <div className="App">
+       {/* Pass photoData from state to HomeRoute */}
       <HomeRoute
-        openModal={setPhotoSelected}
-        hasFavorites={hasFavorites}
-        updateFavorites={updateToFavPhotoIds}
+        openModal={openModal}
+        favorites={favorites}
+        updateFavorites={updateFavorites}
+        photos={state.photoData}
+        topics={state.topicData}
+        isFavPhotoExist={favorites.length > 0}
+        fetchPhotosByTopic = {fetchPhotosByTopic}
       />
-      {state.isModalOpen && state.selectedPhoto && (
+      
+      {modal && selectedPhoto && (
         <PhotoDetailsModal
-          isOpen={state.isModalOpen}
-          onClose={onClosePhotoDetailsModal}
-          selectedPhoto={state.selectedPhoto}
-          updateFavorites={updateToFavPhotoIds}
-          photos={photos} 
+          photo={selectedPhoto}
+          similarPhotos={selectedPhoto.similar_photos}
+          closeModal={closeModal}
+          favorites={favorites}
+          updateFavorites={updateFavorites}
+          // check if there are any favorite photos
+          isFavPhotoExist={favorites.length > 0}
         />
       )}
     </div>

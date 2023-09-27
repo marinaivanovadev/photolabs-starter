@@ -2,6 +2,7 @@
 The PhotoLabs project for the Web Development React course programming.
 
 # Photolabs
+https://github.com/marinaivanovadev/photolabs-starter/blob/main/frontend/src/assets/bytopic.png?raw=true
 
 ## Setup
 

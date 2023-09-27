@@ -4,7 +4,7 @@ The PhotoLabs project for the Web Development React course programming.
 
 # Photolabs
     ## Main page
-![mainPage](https://github.com/marinaivanovadev/photolabs-starter/assets/130605410/78b03da7-5575-4d0d-a80a-1ef49a3aafdd)
+![mainPage](https://github.com/marinaivanovadev/photolabs-starter/blob/main/docs/photo-mainpage.png)
 
     ## Open Module with details
 ![openmodule](https://github.com/marinaivanovadev/photolabs-starter/assets/130605410/79b73f69-611b-4fda-a62d-c1aead3bd543)

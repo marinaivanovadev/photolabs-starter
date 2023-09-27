@@ -1,21 +1,25 @@
 import React from "react";
 import TopicListItem from "./TopicListItem";
 import "../styles/TopicList.scss";
-import topics from 'mocks/topics';
 
 
+const TopicList = (props) => {
+  const handleItemClick = (topicId) => {
 
-const TopicList = () => {
+      // Invoke the onTopicClick callback when a topic is clicked
+
+    if (props.onTopicClick) {
+      props.onTopicClick(topicId);
+    }
+
+  };
   return (
     <ul className="top-nav-bar__topic-list">
-      {/* Insert React */}
-      {topics.map((topic) => (
-            
+      {props.topics.map((topic) => (
         <TopicListItem
-          key={topic.id}
-          title={topic.title}
-          slug={topic.slug} />
-             
+        key={topic.id}
+        topic = {topic}
+        onTopicClick={() => handleItemClick(topic.id)} />
       ))}
     </ul>
   );

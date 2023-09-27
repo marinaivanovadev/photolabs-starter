@@ -1,28 +1,24 @@
-import React, {useState} from 'react';
-import TopicList from './TopicList'; 
+import React from 'react';
+import TopicList from './TopicList';
 import FavBadge from './FavBadge';
-import FavIcon from './FavIcon';
 
 import '../styles/TopNavigationBar.scss'
 
-const TopNavigationBar = ({
- topics,
- getPhotosByTopic,
- hasFavorites,
- getAllPhotos,
 
-}) => {
+const TopNavigationBar = (props) => {
+    const handleItemClick = (topicId) => {
+        // Call the onTopicClick callback when a topic is clicked
+        if (props.onTopicClick) {
+            props.onTopicClick(topicId);
+        }
+    };
   return (
     <div className="top-nav-bar">
-      <span onClick={getAllPhotos} className="top-nav-bar__logo">PhotoLabs</span>
-      <TopicList topics={topics} getPhotosByTopic={getPhotosByTopic} />
-      <div>
-      
-      <FavBadge hasFavorites={hasFavorites}/>
-      </div>
-      </div>
-        )
+      <span className="top-nav-bar__logo">PhotoLabs</span>
+      <TopicList topics = {props.topics} onTopicClick={handleItemClick}/>
+      <FavBadge isFavPhotoExist={props.isFavPhotoExist}/>
+    </div>
+  )
 }
 
 export default TopNavigationBar;
-
